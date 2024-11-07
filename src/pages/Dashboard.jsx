@@ -52,7 +52,7 @@ const Dashboard = () => {
             <ToggleGridList listView={listView} toggle={toggle}/>
         <div className="w-full">
         {
-            listView ? <List allCoins={ products} listView={listView}/> : <Grid allCoins={products} listView={listView}/>
+            listView ? <List allCoins={ products}/> : <Grid allCoins={products}/>
         }
         </div>
 

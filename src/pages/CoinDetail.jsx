@@ -83,7 +83,7 @@ const CoinDetail = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col gap-10 mt-10">
+    <div className="w-full h-full flex flex-col gap-10 my-10">
       <CoinDetailCard coin={coin} />
       <div className="w-[90%] p-4 md:p-8 mx-auto flex items-center justify-evenly bg-slate-100 rounded-2xl">
         <div className="flex items-center ">

@@ -2,7 +2,7 @@ import React from 'react'
 import CoinListCard from './coin/CoinListCard'
 
 
-function List  ({allCoins, listView}) {
+function List  ({allCoins,}) {
   return (
     <div className='flex flex-col gap-5'>
         {

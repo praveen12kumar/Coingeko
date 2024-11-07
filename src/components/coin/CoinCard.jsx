@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import { IoMdTrendingDown, IoMdTrendingUp, } from "react-icons/io";
 
@@ -13,10 +13,6 @@ function CoinCard ({ coin}) {
     const isPositiveChange = coin?.market_cap_change_percentage_24h >= 0;
     const changeColorClass = isPositiveChange ? "text-green-600 border-green-600" : "text-red-500 border-red-600";
     const hoverClass = isPositiveChange ? "hover:bg-green-600 hover:border-green-600" : "hover:bg-red-600 hover:border-red-600";
-
-
-    
-
 
     return (
         <div 
