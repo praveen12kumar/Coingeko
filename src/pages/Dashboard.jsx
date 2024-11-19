@@ -24,7 +24,15 @@ const Dashboard = () => {
   } 
 
 
-  const {isLoading, error, data:products} = useQuery({queryKey:["products", page], queryFn:fetchProducts, placeholderData: keepPreviousData, staleTime:6000})
+  const {isLoading, error, data:products} = 
+      useQuery({queryKey:["products", page], 
+      queryFn:fetchProducts, 
+      keepPreviousData:true, 
+      // retry:2,
+      // retryDelay:1000,
+      staleTime:1000 * 60 * 2,
+      cacheTime:1000 * 60 * 2,
+    });
 
   const toggle = () => {
     setListView((prev) => !prev);
@@ -32,8 +40,9 @@ const Dashboard = () => {
 
   const handlePageChange = (page) =>{
     setSearchParams((prev)=>{
-      prev.set('page',page)
-      return prev;
+      const newParams = new URLSearchParams(prev);
+      newParams.set("page", page);
+      return newParams
     })
   }
 

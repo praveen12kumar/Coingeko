@@ -3,6 +3,7 @@ import Heading from "../components/common/Heading";
 import iphone from "../assets/iphone.png";
 import { useNavigate } from "react-router-dom";
 
+
 function Home  () {
   const navigate = useNavigate()  
   const onClickHandler = ()=>{
@@ -26,7 +27,7 @@ function Home  () {
       <div className="w-full md:w-[30%] h-full relative">
         <div className="w-[60%] md:w-[70%] h-[100%] md:h-[80%] bg-[#63A1DD] absolute bottom-0 md:bottom-20 right-14 md:right-10 rounded-3xl">
         </div>
-        <img className="w-[65%] md:w-[75%] h-[110%] md:h-[90%] absolute top-0 left-10  animate-up-down" src={iphone} alt="iphone" />
+        <img className="w-[65%] md:w-[75%] h-[110%] md:h-[90%] absolute top-0 left-10  animate-up-down" src={iphone} alt="iphone"  />
       </div>
     </div>
   ) 

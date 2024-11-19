@@ -60,13 +60,15 @@ const CoinDetail = () => {
     queryKey: ["coin", id],
     queryFn: fetchCoin,
     placeholderData: keepPreviousData,
-    staleTime: 6000,
+    staleTime: 1000 * 60 * 2,
+    cacheTime: 1000 * 60 * 2,
   });
 
   const { isLoading: graphLoading, error: graphError, } = useQuery({
     queryKey: ["graph", id, days, priceType],
     queryFn: getGraphData,
-    refetchInterval: 10000,
+    staleTime: 1000 * 60 * 2,
+    cacheTime: 1000 * 60 * 2,
   });
 
 

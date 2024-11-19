@@ -20,7 +20,7 @@ function CoinCard ({ coin}) {
             onClick={() => navigate(`/coin/${coin?.id}`)}
         >
             <div className={`w-full flex items-center gap-6`}>
-                <img className='w-12 h-12 md:w-14 md:h-14' src={coin?.image} alt="coin" />
+                <img className='w-12 h-12 md:w-14 md:h-14' src={coin?.image} loading='lazy' alt="coin" />
                 <div className="flex flex-col items-start">
                     <h1 className='text-md md:text-lg uppercase font-poppins font-semibold'>{coin?.symbol}-USD</h1>
                     <h3 className='text-md font-poppins font-semibold uppercase'>{coin?.name}</h3>

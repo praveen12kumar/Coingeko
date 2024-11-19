@@ -17,7 +17,7 @@ function CoinListCard  ({coin}) {
         onClick={() => navigate(`/coin/${coin?.id}`)}
     >
         <div className={`w-full flex items-center gap-2 md:gap-6`}>
-            <img className='w-8 h-8 md:w-14 md:h-14' src={coin?.image} alt="coin" />
+            <img className='w-8 h-8 md:w-14 md:h-14' src={coin?.image} loading='lazy' alt="coin" />
             <div className="flex flex-col items-start">
                 <h1 className='text-[12px] md:text-lg uppercase font-poppins font-semibold'>{coin?.symbol}-USD</h1>
                 <h3 className='text-[10px] md:text-lg font-poppins uppercase'>{coin?.name}</h3>
