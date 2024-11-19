@@ -37,16 +37,16 @@ function CoinListCard  ({coin}) {
 
         <div className="w-full">
             <h1 className={`text-sm md:text-lg ${changeColorClass}  font-poppins font-semibold`}>
-            {currency === "USD" ? "$" : "₹"}{coin?.current_price?.toFixed(2)}
+            {currency === "usd" ? "$" : "₹"}{coin?.current_price?.toFixed(2)}
             </h1>
         </div>
 
         <div className="w-full flex flex-col lg:flex-row items-start gap-2 lg:gap-10">
             <h3 className='text-sm md:text-md lg:text-lg font-bold text-slate-600 font-nunito'>
-            {currency === "USD" ? "$" : "₹"}{convertNumber(coin?.total_volume)}
+            {currency === "usd" ? "$" : "₹"}{convertNumber(coin?.total_volume)}
             </h3>
             <h3 className=' hidden md:block text-sm md:text-md lg:text-lg text-slate-600 font-nunito font-bold'>
-            {currency === "USD" ? "$" : "₹"}{convertNumber(coin?.market_cap)}
+            {currency === "usd" ? "$" : "₹"}{convertNumber(coin?.market_cap)}
             </h3>
         </div>
     </div>

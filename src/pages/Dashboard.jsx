@@ -43,7 +43,6 @@ const Dashboard = () => {
   }
 
   if(isLoading){
-    console.log("loading", isLoading);
     return <Loader />
   }
   if(error){

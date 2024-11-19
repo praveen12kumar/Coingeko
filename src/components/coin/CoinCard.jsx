@@ -37,18 +37,18 @@ function CoinCard ({ coin}) {
 
             <div className="w-full">
                 <h1 className={`text-xl ${changeColorClass}  font-poppins font-semibold`}>
-                    {currency === "USD" ? "$" : "₹"}{coin?.current_price?.toFixed(2)}
+                    {currency === "usd" ? "$" : "₹"}{coin?.current_price?.toFixed(2)}
                 </h1>
             </div>
 
             <div className="w-full flex flex-col items-start gap-2">
                 <h3 className='text-sm font-bold text-slate-600 font-nunito'>
                     <span className='text-sm font-normal  font-poppins text-slate-700'>Total Volume: </span>
-                    {currency === "USD" ? "$" : "₹"}{coin?.total_volume?.toFixed(2)}
+                    {currency === "usd" ? "$" : "₹"}{coin?.total_volume?.toFixed(2)}
                 </h3>
                 <h3 className='text-sm text-slate-600 font-nunito font-bold'>
                     <span className='text-sm font-normal font-poppins text-slate-700'>Market Cap: </span>
-                    {currency === "USD" ? "$" : "₹"}{coin?.market_cap?.toFixed(2)}
+                    {currency === "usd" ? "$" : "₹"}{coin?.market_cap?.toFixed(2)}
                 </h3>
             </div>
         </div>

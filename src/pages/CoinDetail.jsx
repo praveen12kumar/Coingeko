@@ -32,8 +32,6 @@ const CoinDetail = () => {
       }
     );
 
-    console.log("response", response.data);
-
     const data = 
       priceType === "market_caps" ? response.data.market_caps :
       priceType === "total_volumes" ? response.data.total_volumes :
@@ -67,7 +65,6 @@ const CoinDetail = () => {
   const { isLoading: graphLoading, error: graphError, } = useQuery({
     queryKey: ["graph", id, days, priceType],
     queryFn: getGraphData,
-    staleTime: 1000 * 60 * 2,
     cacheTime: 1000 * 60 * 2,
   });
 
