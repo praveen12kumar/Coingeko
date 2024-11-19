@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import CoinContext from '../../context/CoinContext';
 import { IoMdTrendingDown, IoMdTrendingUp, } from "react-icons/io";
 
 import { useNavigate } from 'react-router-dom';
 
 function CoinCard ({ coin}) {
     const navigate = useNavigate();
-    const [currencyType] = useState("$");
-    
+    const {currency} = useContext(CoinContext);
 
     
     const isPositiveChange = coin?.market_cap_change_percentage_24h >= 0;
@@ -38,18 +37,18 @@ function CoinCard ({ coin}) {
 
             <div className="w-full">
                 <h1 className={`text-xl ${changeColorClass}  font-poppins font-semibold`}>
-                    {currencyType}{coin?.current_price?.toFixed(2)}
+                    {currency === "USD" ? "$" : "₹"}{coin?.current_price?.toFixed(2)}
                 </h1>
             </div>
 
             <div className="w-full flex flex-col items-start gap-2">
                 <h3 className='text-sm font-bold text-slate-600 font-nunito'>
                     <span className='text-sm font-normal  font-poppins text-slate-700'>Total Volume: </span>
-                    {currencyType}{coin?.total_volume?.toFixed(2)}
+                    {currency === "USD" ? "$" : "₹"}{coin?.total_volume?.toFixed(2)}
                 </h3>
                 <h3 className='text-sm text-slate-600 font-nunito font-bold'>
                     <span className='text-sm font-normal font-poppins text-slate-700'>Market Cap: </span>
-                    {currencyType}{coin?.market_cap?.toFixed(2)}
+                    {currency === "USD" ? "$" : "₹"}{coin?.market_cap?.toFixed(2)}
                 </h3>
             </div>
         </div>

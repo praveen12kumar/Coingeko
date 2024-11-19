@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import React, { useContext, useState } from 'react';
+import CoinContext from "../context/CoinContext";
+import { useQuery} from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import Grid from '../components/Grid';
 import List from '../components/List';
@@ -10,15 +10,19 @@ import Error from '../components/common/Error';
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
 import { fetchProducts } from '../services/fetchProducts';
+import Dropdown from '../components/Dropdown/Dropdown';
+
 const Dashboard = () => {
 
   const [listView, setListView] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams({page:1, per_page:12});
   const page = parseInt(searchParams.get('page') || 1);
- 
+
+  const {currency, setCurrency} = useContext(CoinContext);
+
   const {isLoading, error, data:products} = 
-      useQuery({queryKey:["products", page], 
-      queryFn:()=>fetchProducts(page, "usd"),
+      useQuery({queryKey:["products", page, currency], 
+      queryFn:()=>fetchProducts(page, currency),
       keepPreviousData:true, 
       // retry:2,
       // retryDelay:1000,
@@ -49,7 +53,10 @@ const Dashboard = () => {
 
   return (
     <div className='max-w-[90vw] mx-auto min-h-[calc(100vh-10vh)] flex flex-col gap-8 mb-10 relative '>
-            <Search/>
+            <div className="w-full flex gap-10 items-center justify-center mt-10">
+                <Search />
+                <Dropdown setCurrency={setCurrency}  />
+            </div>
             <ToggleGridList listView={listView} toggle={toggle}/>
         <div className="w-full">
         {

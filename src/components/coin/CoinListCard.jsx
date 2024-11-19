@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { IoMdTrendingDown, IoMdTrendingUp } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { convertNumber } from '../../utils';
+import CoinContext from '../../context/CoinContext';
 
 function CoinListCard  ({coin}) {
     const navigate = useNavigate();
-    const [currencyType] = useState("$");
     
+    const {currency} = useContext(CoinContext);
+
     const isPositiveChange = coin?.market_cap_change_percentage_24h >= 0;
     const changeColorClass = isPositiveChange ? "text-green-600 border-green-600" : "text-red-500 border-red-600";
     const hoverClass = isPositiveChange ? "hover:bg-green-600 hover:border-green-600" : "hover:bg-red-600 hover:border-red-600";
@@ -35,16 +37,16 @@ function CoinListCard  ({coin}) {
 
         <div className="w-full">
             <h1 className={`text-sm md:text-lg ${changeColorClass}  font-poppins font-semibold`}>
-                {currencyType}{coin?.current_price?.toFixed(2)}
+            {currency === "USD" ? "$" : "₹"}{coin?.current_price?.toFixed(2)}
             </h1>
         </div>
 
         <div className="w-full flex flex-col lg:flex-row items-start gap-2 lg:gap-10">
             <h3 className='text-sm md:text-md lg:text-lg font-bold text-slate-600 font-nunito'>
-                {currencyType}{convertNumber(coin?.total_volume)}
+            {currency === "USD" ? "$" : "₹"}{convertNumber(coin?.total_volume)}
             </h3>
             <h3 className=' hidden md:block text-sm md:text-md lg:text-lg text-slate-600 font-nunito font-bold'>
-                {currencyType}{convertNumber(coin?.market_cap)}
+            {currency === "USD" ? "$" : "₹"}{convertNumber(coin?.market_cap)}
             </h3>
         </div>
     </div>

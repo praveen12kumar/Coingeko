@@ -21,8 +21,8 @@ const Search = () => {
         setSearch(e.target.value);
     };
   return (
-    <div className="w-full mt-10 relative">
-    <div className=" w-[80%] py-1 pl-6 mx-auto rounded-full flex items-center  bg-[#f3f3f3] ">
+    <div className="w-[70vw]  relative">
+    <div className=" w-full py-1 pl-6 mx-auto rounded-full flex items-center  bg-[#f3f3f3] ">
         <IoIosSearch className='text-2xl font-bold'/>
         <Input 
             styles={"text-md font-poppins text-slate-700"}
