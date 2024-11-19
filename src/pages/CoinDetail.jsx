@@ -10,6 +10,8 @@ import Dropdown from '../components/common/Dropdown';
 import Button from '../components/common/Button';
 import { gettingDate } from '../utils';
 import LineChart from '../components/LineChart';
+import { fetchCoinDetail } from '../services/fetchCoinDetail';
+
 
 const CoinDetail = () => {
   const { id } = useParams();
@@ -17,11 +19,7 @@ const CoinDetail = () => {
   const [days, setDays] = useState(30);
   const [priceType, setPriceType] = useState("prices");
 
-  const fetchCoin = async () => {
-    const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
-    return response.data;
-  };
-
+  
   const getGraphData = async () => {
     const response = await axios.get(
       `https://api.coingecko.com/api/v3/coins/${id}/market_chart`,
@@ -33,6 +31,8 @@ const CoinDetail = () => {
         },
       }
     );
+
+    console.log("response", response.data);
 
     const data = 
       priceType === "market_caps" ? response.data.market_caps :
@@ -57,8 +57,8 @@ const CoinDetail = () => {
   };
 
   const { isLoading, error, data: coin } = useQuery({
-    queryKey: ["coin", id],
-    queryFn: fetchCoin,
+    queryKey: ["coin", id, priceType],
+    queryFn: ()=>fetchCoinDetail(id),
     placeholderData: keepPreviousData,
     staleTime: 1000 * 60 * 2,
     cacheTime: 1000 * 60 * 2,

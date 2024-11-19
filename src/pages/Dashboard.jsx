@@ -9,24 +9,16 @@ import ToggleGridList from '../components/ToggleGridList';
 import Error from '../components/common/Error';
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
-
+import { fetchProducts } from '../services/fetchProducts';
 const Dashboard = () => {
 
   const [listView, setListView] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams({page:1, per_page:12});
   const page = parseInt(searchParams.get('page') || 1);
-  const per_page = parseInt(searchParams.get('per_page') || 12);
-  
-  const fetchProducts = async ()=>{
-    let url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${per_page}&page=${page}`;
-    const response = await axios.get(url);
-    return response.data;
-  } 
-
-
+ 
   const {isLoading, error, data:products} = 
       useQuery({queryKey:["products", page], 
-      queryFn:fetchProducts, 
+      queryFn:()=>fetchProducts(page, "usd"),
       keepPreviousData:true, 
       // retry:2,
       // retryDelay:1000,
